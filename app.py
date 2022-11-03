@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,json
 from flask_cors import CORS, cross_origin
 import pickle
 import pandas as pd
@@ -13,16 +13,15 @@ df = pd.read_csv("Cleaned_Car_data.csv")
 @app.route("/", methods=["GET", "POST"])
 def index():
     car_models = sorted(df["model"].unique())
-    companies = sorted(df["brand"].unique())
-    # purchase_year = sorted(df["year"].unique(), reverse = True)
-    fuel_types = sorted(df["gear_box"].unique())
+    brands = sorted(df["brand"].unique())
+    purchase_year = sorted(df["year"].unique(), reverse=True)
+    gear_box = sorted(df["gear_box"].unique())
 
-    companies.insert(0, "Select Company")
-    # purchase_year.insert(0, "Select Year")
-    fuel_types.insert(0, "Select Fuel Type")
+    brands.insert(0, "Select Company")
+    purchase_year.insert(0, "Select Year")
+    gear_box.insert(0, "Select Fuel Type")
 
-    return [car_models, companies, fuel_types]
-
+    return json(brands=brands, car_models=car_models , purchase_year=purchase_year , gear_box=gear_box)
 
 @app.route("/predict", methods=["POST"])
 @cross_origin(supports_credentials=True)
@@ -33,7 +32,8 @@ def predict():
     gear_box = request.form.get('gear_box')
     # kms_driven = request.form.get('kms_driven')
 
-    prediction = model.predict(pd.DataFrame(columns=['model', 'brand', 'gear_box'], data = np.array([car_model, brand, gear_box]).reshape(1, 3)))
+    prediction = model.predict(
+        pd.DataFrame(columns=['model', 'brand', 'gear_box'], data=np.array([car_model, brand, gear_box]).reshape(1, 3)))
     # print(prediction)
 
     return str(np.round(prediction[0], 2))
