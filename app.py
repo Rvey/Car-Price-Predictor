@@ -34,7 +34,11 @@ def predict():
     energy = request.form.get('energy')
     trim = request.form.get('trim')
 
-    if request.headers.get('Authorization') == os.environ["API_KEY"]:
+    apikey = request.headers.get('Authorization')
+    if apikey and apikey.startswith('apikey '):
+        apikey = apikey[7:]
+        
+    if apikey == os.environ["API_KEY"]:
 
         prediction = model.predict(
         pd.DataFrame(columns=['model', 'brand', 'gear_box', 'energy' , 'year' , 'trim'], data=np.array([car_model, brand, gear_box,energy,purchase_year,trim]).reshape(1, 6)))
