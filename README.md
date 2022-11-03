@@ -4,7 +4,7 @@
 ## Authorization
 | Key | Value | add to |
 | :--- | :--- | :--- |
-| `Authorization` | value | Header |
+| `Authorization` | apikey `yourApiKey` | Header |
 
 ## Request
 
