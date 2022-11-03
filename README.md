@@ -29,6 +29,7 @@ POST /predict
 | `model` | `string` | model name |
 | `gear_box` | `string` | gear_box name |
 | `trim` | `string` | trim name |
+| `energy` | `string` | energy type |
 | `purchase_year` | `int` | purchase_year |
 
 ## Response
