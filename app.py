@@ -21,7 +21,7 @@ def index():
     # purchase_year.insert(0, "Select Year")
     fuel_types.insert(0, "Select Fuel Type")
 
-    return car_models
+    return [car_models, companies, fuel_types]
 
 
 @app.route("/predict", methods=["POST"])
@@ -33,11 +33,11 @@ def predict():
     gear_box = request.form.get('gear_box')
     # kms_driven = request.form.get('kms_driven')
 
-    # prediction = model.predict(pd.DataFrame(columns=['model', 'brand', 'gear_box', 'year'], data = np.array([car_model, company, fuel_type , 2030]).reshape(1, 4)))
+    prediction = model.predict(pd.DataFrame(columns=['model', 'brand', 'gear_box'], data = np.array([car_model, brand, gear_box]).reshape(1, 3)))
     # print(prediction)
 
-    # return str(np.round(prediction[0], 2))
-    return {"brand": brand, "car_model": car_model, "gear_box": gear_box}
+    return str(np.round(prediction[0], 2))
+    # return {"brand": brand, "car_model": car_model, "gear_box": gear_box}
 
 
 if __name__ == "__main__":
