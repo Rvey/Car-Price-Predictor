@@ -16,7 +16,7 @@ GET|POST /
 
 HTTP/1.1 200 OK
 
-```{"brand":[all brands from the csv],"models":[all models from the csv],"gear_box":[all gear_box from the csv],"trim":[all versions from the csv]}```
+```{"brand":[all brands from the csv],"models":[all models from the csv],"gear_box":[all gear_box from the csv],"trim":[all versions from the csv], "energy":[all energy type from the csv]}```
 
 
 ## Request

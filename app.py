@@ -19,10 +19,9 @@ def index():
     brands = sorted(df["brand"].unique())
     purchase_year = sorted(df["year"].unique(), reverse=True)
     gear_box = sorted(df["gear_box"].unique())
+    energy = sorted(df["energy"].unique())
 
-    # purchase_year_clean = [int(float(year[:-1]) * 1000) for year in df["year"]]
-
-    return jsonify({"car_models": car_models, "brands": brands, "gear_box": gear_box})
+    return jsonify({"car_models": car_models, "brands": brands, "gear_box": gear_box, "energy": energy})
 
 
 @app.route("/predict", methods=["POST"])
