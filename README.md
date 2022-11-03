@@ -9,7 +9,7 @@
 ## Request
 
 ```http
-GET|POST /
+GET /
 ```
 
 ## Response
