@@ -41,7 +41,7 @@ HTTP/1.1 200 OK
 docker image build -t python-docker .
 ```
 
-## run and expose port 
+## run
 ```
 docker run -p 5000:5000 python-docker
 ```
