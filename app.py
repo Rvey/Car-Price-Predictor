@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 import os
-import json
 import pickle
 import pandas as pd
 import numpy as np

@@ -35,3 +35,13 @@ POST /predict
 ## Response
 HTTP/1.1 200 OK
 -> predicted price
+
+## build docker image
+``` 
+docker image build -t python-docker .
+```
+
+## run docker container and expose port 
+```
+docker run -p 5000:5000 python-docker
+```
