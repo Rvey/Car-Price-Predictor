@@ -1,4 +1,4 @@
-# car_price_prediction(wip)
+# car price prediction
 
 
 ## Authorization
@@ -36,12 +36,12 @@ POST /predict
 HTTP/1.1 200 OK
 -> predicted price
 
-## build docker image
+## build image
 ``` 
 docker image build -t python-docker .
 ```
 
-## run docker container and expose port 
+## run and expose port 
 ```
 docker run -p 5000:5000 python-docker
 ```
